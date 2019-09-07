@@ -1,0 +1,29 @@
+#top-tabbar{
+    background:linear-gradient( 22deg, rgb(246,139,14) 0%, rgb(255, 208, 0) 80%);
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    a {
+      text-decoration: none;
+      color: #fff;
+      display: block;
+      width: 33.33333%;
+      text-align: center;
+      height: 55px;
+      font-size: 14px;
+      div:nth-child(1){
+        margin-top: 8px;
+      }
+      img{
+        width: 20px;
+      }
+    }
+    .current{
+      position: relative;
+      text-shadow:0 0 3px #fff,-0 -0 3px #fff;
+    }
+}

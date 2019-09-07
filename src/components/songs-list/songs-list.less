@@ -1,0 +1,78 @@
+@import "../../style/common.less";
+#songs-list{
+  margin-top: 20px;
+  margin-bottom: 75px;
+  .songs-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding:5px 2.5% 2px 2.5%;
+    background: #fff;
+    &:active{
+      background: #f7f7f7;
+      transition:all .1s ease-in;
+    }
+    //border-bottom: 1px solid #f9f9f9;
+    .item-left{
+      width: 70%;
+      font-size: 12px;
+      color: #969696;
+      .item-title{
+        font-size: 14px;
+        .fontColor;
+        margin-top: 5px;
+        margin-bottom: 10px;
+      }
+      .item-artist{
+        margin-bottom: 5px;
+      }
+
+    }
+    .item-right{
+      width: 20%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: right;
+      height: 41px;
+      line-height: 41px;
+      .item-add{
+        width: 50%;
+        font-size: 30px;
+        font-weight: 400;
+        color: #cccccc;
+      }
+      .collect-song{
+        width: 50%;
+        color: #cccccc;
+        font-size: 13px;
+      }
+
+    }
+  }
+
+  .current-played{
+    position: relative;
+    &:before{
+      position: absolute;
+      content: "";
+      display: block;
+      width: 3px;
+      height: 50px;
+      background: #ffbf37;
+      left:0;
+    }
+    .item-left{
+      .item-title{
+        color: #ffbf37;
+      }
+      .item-artist{
+        color: #ffbf37;
+      }
+    }
+  }
+
+
+};
+

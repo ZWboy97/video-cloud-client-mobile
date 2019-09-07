@@ -1,0 +1,56 @@
+@import "../../style/common.less";
+#repertoire{
+  margin:83px 0 90px 0
+}
+.wing-blank{
+  width:92%;
+  margin:0 auto;
+}
+/*banner*/
+.banner{
+  .wing-blank;
+  margin-top:15px;
+  .slider-list{
+    height: 153px!important;
+  }
+  .am-carousel-wrap{
+
+  }
+  .banner-img{
+    width: 100%;
+    vertical-align: top
+  }
+}
+/*每日推荐*/
+.recommend{
+  .wing-blank;
+  overflow-x: hidden;
+  .recommend-wrapper{
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    .recommend-item {
+      display: inline-block;
+      margin-right: 10px;
+      &:last-child{
+        margin-right: 0;
+      }
+      img{
+        width: 90px;
+      }
+      .item-name{
+        font-size: 12px;
+        .fontColor;
+        margin-top: 5px;
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+/*曲库好歌*/
+
+
+
