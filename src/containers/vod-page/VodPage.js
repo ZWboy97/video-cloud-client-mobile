@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './discover.less';
+import './style.less';
 import { Link } from 'react-router-dom';
 import { Icon } from 'antd-mobile';
 import Title from '../../components/title';

@@ -48,7 +48,7 @@ class BottomTabBar extends React.Component {
                             this.setState({
                                 selectedTab: "zhibo",
                             });
-                            this.props.history.push('/repertoire');
+                            this.props.history.push('/lives');
                         }}
                     />
 
@@ -76,7 +76,7 @@ class BottomTabBar extends React.Component {
                             this.setState({
                                 selectedTab: 'vod',
                             });
-                            this.props.history.push('/discover');
+                            this.props.history.push('/vod');
                         }}
                     />
 
