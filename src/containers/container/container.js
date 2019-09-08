@@ -8,8 +8,6 @@ import AlbumDetail from '../album-detail/album-detail';
 import CollectSongs from '../collect-songs/collect-songs';
 import CollectSongList from '../collect-song-list/collect-song-list';
 import Search from '../search/search';
-import StyleSongsList from '../style-songs-list/style-songs-list';
-import StyleSongsListDetail from '../style-songs-list-detail/style-songs-list-detail';
 import UserCenter from '../user-center/user-center';
 import { HOST } from '../../const/host';
 import { setRoute } from '../../util/backTo';
@@ -43,8 +41,6 @@ class Container extends Component {
                     <Route path={`${HOST}/collectsonglist/:id`} component={CollectSongList} />
                     <Route path={`${HOST}/collectsonglistdetail/:id`} component={CollectSongs} />
                     <Route path={`${HOST}/search`} component={Search} />
-                    <Route path={`${HOST}/style-songs-list`} component={StyleSongsList} />
-                    <Route path={`${HOST}/style-songs-list-detail`} component={StyleSongsListDetail} />
                     <Route path={`${HOST}/user-center/:id`} component={UserCenter} />
                 </Switch>
             </div>
