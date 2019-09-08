@@ -1,18 +1,21 @@
-import React, {Component} from 'react';
+/**
+ * 空格组件
+ */
+import React, { Component } from 'react';
 
 class WhiteSpace extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            style:{
-                width:"100%",
-                height:"15px",
-                background:"#f5f5f5",
-                margin:"12px 0"
+            style: {
+                width: "100%",
+                height: "15px",
+                background: "#f5f5f5",
+                margin: "12px 0"
             }
         }
     }
-    shouldComponentUpdate(){
+    shouldComponentUpdate() {
         return false
     }
     render() {

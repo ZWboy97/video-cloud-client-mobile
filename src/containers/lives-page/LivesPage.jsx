@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Carousel } from 'antd-mobile';
 import WhiteSpace from '../../components/whiteSpace';
 import Title from '../../components/title';
-import LivesList from '../../components/songs-list/songs-list';
+import LivesList from '../../components/lives-list/LivesList';
 import { fetchBanner, fetchRecommend, fetchReSongsData } from '../../redux/repertoire.redux';
 import { connect } from 'react-redux';
 import './style.less';
@@ -85,7 +85,7 @@ class LivesPage extends Component {
                 <Title title="正在直播"></Title>
                 {
                     this.props.reSongsData ?
-                        ""
+                        <LivesList></LivesList>
                         :
                         ""
                 }
