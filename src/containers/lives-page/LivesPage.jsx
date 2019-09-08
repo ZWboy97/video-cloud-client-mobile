@@ -1,23 +1,22 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'antd-mobile';
 import WhiteSpace from '../../components/whiteSpace';
 import Title from '../../components/title';
-import SongsList from '../../components/songs-list/songs-list';
-import {fetchBanner,fetchRecommend,fetchReSongsData} from '../../redux/repertoire.redux';
+import LivesList from '../../components/songs-list/songs-list';
+import { fetchBanner, fetchRecommend, fetchReSongsData } from '../../redux/repertoire.redux';
 import { connect } from 'react-redux';
-import './repertoire.less';
-import {HOST} from '../../const/host'
-@connect(
-    state=>state.repertoire,
-    {fetchBanner,fetchRecommend,fetchReSongsData}
-)
-class Repertoire extends Component {
+import './style.less';
+import { HOST } from '../../const/host'
+
+class LivesPage extends Component {
+
     constructor(props) {
         super(props)
         this.state = {};
     }
-    componentDidMount(){
+
+    componentDidMount() {
         this.props.fetchBanner();
         this.props.fetchRecommend();
         this.props.fetchReSongsData()
@@ -28,7 +27,7 @@ class Repertoire extends Component {
             <div id="repertoire">
                 <div className="banner">
                     {
-                        this.props.bannerData?
+                        this.props.bannerData ?
                             <Carousel
                                 autoplay={true}
                                 infinite
@@ -40,7 +39,7 @@ class Repertoire extends Component {
                                     <Link
                                         key={val}
                                         to={`${HOST}/albumdetail/3`}
-                                        style={{ display: 'inline-block', width: '100%'}}
+                                        style={{ display: 'inline-block', width: '100%' }}
                                     >
                                         <img
                                             src={val}
@@ -58,19 +57,19 @@ class Repertoire extends Component {
                             :
                             ""
                     }
-
                 </div>
                 <WhiteSpace></WhiteSpace>
-                <Title title="每日推荐"></Title>
+
+                <Title title="直播推荐"></Title>
                 <div className="recommend">
                     {
-                        this.props.recommendData?
+                        this.props.recommendData ?
                             <div className="recommend-wrapper">
                                 {
-                                    this.props.recommendData.map(v=>(
+                                    this.props.recommendData.map(v => (
                                         <Link to={`${HOST}/songlistdetail/${v.id}`} key={v.src} className="recommend-item">
                                             <div>
-                                                <img src={v.src} alt=""/>
+                                                <img src={v.src} alt="" />
                                             </div>
                                             <div className="item-name">{v.name}</div>
                                         </Link>
@@ -83,10 +82,10 @@ class Repertoire extends Component {
                 </div>
                 <WhiteSpace></WhiteSpace>
 
-                <Title title="曲库好歌"></Title>
+                <Title title="正在直播"></Title>
                 {
-                    this.props.reSongsData?
-                        <SongsList songs={this.props.reSongsData}></SongsList>
+                    this.props.reSongsData ?
+                        ""
                         :
                         ""
                 }
@@ -96,4 +95,7 @@ class Repertoire extends Component {
         )
     }
 }
-export default Repertoire
+export default connect(
+    state => state.repertoire,
+    { fetchBanner, fetchRecommend, fetchReSongsData }
+)(LivesPage)

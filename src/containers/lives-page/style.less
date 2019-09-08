@@ -1,17 +1,16 @@
 @import "../../style/common.less";
 #repertoire{
-  margin:83px 0 90px 0
+  margin:0px 0 90px 0
 }
 .wing-blank{
-  width:92%;
+  width:100%;
   margin:0 auto;
 }
 /*banner*/
 .banner{
   .wing-blank;
-  margin-top:15px;
   .slider-list{
-    height: 153px!important;
+    /*height: 150px!important;*/
   }
   .am-carousel-wrap{
 
@@ -32,11 +31,15 @@
     .recommend-item {
       display: inline-block;
       margin-right: 10px;
+      &:first-child{
+        margin-left: 10px;
+      }
       &:last-child{
-        margin-right: 0;
+        margin-right: 10;
       }
       img{
-        width: 90px;
+        width: 160px;
+        height: 90px;
       }
       .item-name{
         font-size: 12px;
