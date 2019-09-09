@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
-import LivesPage from '../lives-page/LivesPage';
+import LivesPage from '../lives-index-page/LivesPage';
 import Me from '../me/me';
-import Discover from '../vod-page/VodPage';
-import SongListDetail from '../song-list-detail/song-list-detail';
-import AlbumDetail from '../album-detail/album-detail';
+import VodPage from '../vod-index-page/VodPage';
+import VodDisplayPage from '../vod-display-page/VodDisplayPage';
+import LiveDisplayPage from '../live-display-page/LiveDisplayPage';
 import CollectSongs from '../collect-songs/collect-songs';
 import CollectSongList from '../collect-song-list/collect-song-list';
-import Search from '../search/search';
+import Search from '../search-page/search';
 import UserCenter from '../user-page/user-center';
 import { HOST } from '../../const/host';
 import { setRoute } from '../../util/backTo';
@@ -34,9 +34,9 @@ class Container extends Component {
                     <Route exact path="/" render={() => <Redirect to="/lives" push />} />
                     <Route path={`${HOST}/lives`} component={LivesPage} />
                     <Route path={`${HOST}/me`} component={Me} />
-                    <Route path={`${HOST}/vod`} component={Discover} />
-                    <Route path={`${HOST}/songlistdetail/:id`} component={SongListDetail} />
-                    <Route path={`${HOST}/albumdetail/:id`} component={AlbumDetail} />
+                    <Route path={`${HOST}/vod`} component={VodPage} />
+                    <Route path={`${HOST}/vod-display/:id`} component={VodDisplayPage} />
+                    <Route path={`${HOST}/live-display/:id`} component={LiveDisplayPage} />
                     <Route path={`${HOST}/collectsongs`} component={CollectSongs} />
                     <Route path={`${HOST}/collectsonglist/:id`} component={CollectSongList} />
                     <Route path={`${HOST}/collectsonglistdetail/:id`} component={CollectSongs} />

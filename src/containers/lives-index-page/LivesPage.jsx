@@ -38,7 +38,7 @@ class LivesPage extends Component {
                                 {this.props.bannerData.map(val => (
                                     <Link
                                         key={val}
-                                        to={`${HOST}/albumdetail/3`}
+                                        to={`${HOST}/live-display/3`}
                                         style={{ display: 'inline-block', width: '100%' }}
                                     >
                                         <img
@@ -67,7 +67,7 @@ class LivesPage extends Component {
                             <div className="recommend-wrapper">
                                 {
                                     this.props.recommendData.map(v => (
-                                        <Link to={`${HOST}/songlistdetail/${v.id}`} key={v.src} className="recommend-item">
+                                        <Link to={`${HOST}/live-display/${v.id}`} key={v.src} className="recommend-item">
                                             <div>
                                                 <img src={v.src} alt="" />
                                             </div>

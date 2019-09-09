@@ -42,7 +42,7 @@ class Discover extends Component {
                         {
                             this.props.data ?
                                 this.props.data.style.map(v => (
-                                    <Link to={`${HOST}/style-songs-list`} onClick={() => { this.storeInfo(v.id, v.name) }} className="style-item" key={v.id}>
+                                    <Link to={`${HOST}/vod-display/34`} onClick={() => { this.storeInfo(v.id, v.name) }} className="style-item" key={v.id}>
                                         <div className="cover">
                                             <img src={v.cover} alt="图片丢失了！呜呜呜" />
                                         </div>
