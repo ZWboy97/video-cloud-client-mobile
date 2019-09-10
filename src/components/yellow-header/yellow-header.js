@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { getRoute } from '../../util/backTo';
 import './yellow-header.less'
 class YellowHeader extends Component {
@@ -13,14 +13,11 @@ class YellowHeader extends Component {
         return (
             <div className="yellow-header">
                 <Link to={getRoute()} className="left">
-                    <Icon type="left"/>
-                        <span>
-                           返回
-                        </span>
+                    <Icon type="left" />
                 </Link>
                 <div className="title">{this.props.title}</div>
             </div>
         )
     }
 }
-export default YellowHeader
+export default withRouter(YellowHeader);

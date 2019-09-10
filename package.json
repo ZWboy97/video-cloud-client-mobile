@@ -112,8 +112,8 @@
     "less-loader": "^4.0.5"
   },
   "theme": {
-    "brand-primary": "#f68b0e",
-    "color-text-base": "#fff",
+    "brand-primary": "#33A3F4",
+    "color-text-base": "#33A3F4",
     "brand-primary-tap": "#f7a03a"
   },
   "homepage": "."

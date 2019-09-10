@@ -1,9 +1,9 @@
 import React from "react";
 import { Tabs, Badge } from 'antd-mobile';
 import VodDescTab from './VodDescTab';
-import './style.less';
 import VodMoreTab from "./VodMoreTab";
 import VodCommentTab from "./VodCommentTab";
+import './style.less';
 
 class VodDisplayPage extends React.Component {
 
