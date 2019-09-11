@@ -8,9 +8,8 @@ class BottomTabBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'zhibo',
+            selectedTab: 'live',
             hidden: false,
-            fullScreen: true,
         };
     }
 
@@ -26,7 +25,7 @@ class BottomTabBar extends React.Component {
                 >
                     <TabBar.Item
                         title="直播"
-                        key="zhibo"
+                        key="live"
                         icon={
                             <div style={
                                 {
@@ -43,10 +42,10 @@ class BottomTabBar extends React.Component {
                                 background: `url(https://pic-cloud-bupt.oss-cn-beijing.aliyuncs.com/icon/tab-live-selected.svg) center center /  21px 21px no-repeat`
                             }} />
                         }
-                        selected={this.state.selectedTab === 'zhibo'}
+                        selected={this.state.selectedTab === 'live'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: "zhibo",
+                                selectedTab: "live",
                             });
                             this.props.history.push('/lives');
                         }}

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import LivesPage from '../lives-index-page/LivesPage';
+import LiveDisplayPage from '../live-display-page/LiveDisplayPage';
 import Me from '../me-index-page/me';
 import VodPage from '../vod-index-page/VodPage';
 import VodDisplayPage from '../vod-display-page/VodDisplayPage';
-import LiveDisplayPage from '../live-display-page/LiveDisplayPage';
 import Search from '../search-page/search';
 import UserCenter from '../user-center-page/user-center';
 import { HOST } from '../../const/host';
@@ -15,15 +15,9 @@ class Container extends Component {
         super(props);
         this.state = {}
     }
-    componentDidMount() {
-        /*用正则匹配出来pathname*/
-        console.log(window.location.pathname);
-        if (window.location.pathname === `${HOST}/`) {
-            this.props.history.push(`${HOST}/lives`)
-        }
-    }
+
     componentWillUpdate() {
-        setRoute(this.props.location.pathname)
+        setRoute(this.props.location.pathname)  // 记录路由记录，用于页面返回
     }
 
     render() {
@@ -35,7 +29,7 @@ class Container extends Component {
                     <Route path={`${HOST}/me`} component={Me} />
                     <Route path={`${HOST}/vod`} component={VodPage} />
                     <Route path={`${HOST}/vod-display/:id`} component={VodDisplayPage} />
-                    <Route path={`${HOST}/live-display/:id`} component={LiveDisplayPage} />
+                    <Route path={`${HOST}/live/display/:id`} component={LiveDisplayPage} />
                     <Route path={`${HOST}/search`} component={Search} />
                     <Route path={`${HOST}/user-center/:id`} component={UserCenter} />
                 </Switch>

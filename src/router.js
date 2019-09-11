@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Container from './containers/container/container';
 import BottomTabBar from './components/bottom-tabbar/BottomTabBar.jsx';
 
-class Router extends Component {
+class IRouter extends Component {
 
     constructor(props) {
         super(props);
@@ -13,13 +13,13 @@ class Router extends Component {
     render() {
 
         return (
-            <BrowserRouter>
+            <Router>
                 <div>
-                    <BottomTabBar></BottomTabBar>
                     <Container></Container>
+                    <BottomTabBar></BottomTabBar>
                 </div>
-            </BrowserRouter>
+            </Router>
         )
     }
 }
-export default Router
+export default IRouter

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'antd-mobile';
-import WhiteSpace from '../../components/whiteSpace';
-import Title from '../../components/title';
-import LivesList from '../../components/lives-list/LivesList';
-import { fetchBanner, fetchRecommend, fetchReSongsData } from '../../redux/repertoire.redux';
+import WhiteSpace from 'mycomponents/whiteSpace';
+import Title from 'mycomponents/title';
+import LivesList from 'mycomponents/lives-list/LivesList';
+import { fetchBanner, fetchRecommend, fetchReSongsData } from 'myredux/repertoire.redux';
 import { connect } from 'react-redux';
+import { HOST } from 'myconst/host';
 import './style.less';
-import { HOST } from '../../const/host'
 
 class LivesPage extends Component {
 
@@ -19,7 +19,7 @@ class LivesPage extends Component {
     componentDidMount() {
         this.props.fetchBanner();
         this.props.fetchRecommend();
-        this.props.fetchReSongsData()
+        this.props.fetchReSongsData();
     }
 
     render() {
@@ -32,18 +32,16 @@ class LivesPage extends Component {
                                 autoplay={true}
                                 infinite
                                 selectedIndex={1}
-                                beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-                                afterChange={index => console.log('slide to', index)}
                             >
                                 {this.props.bannerData.map(val => (
                                     <Link
                                         key={val}
-                                        to={`${HOST}/live-display/3`}
+                                        to={`${HOST}/live/display/3`}
                                         style={{ display: 'inline-block', width: '100%' }}
                                     >
                                         <img
                                             src={val}
-                                            alt=""
+                                            alt="图片加载失败"
                                             className="banner-img"
                                             onLoad={() => {
                                                 // fire window resize event to change height
@@ -67,7 +65,7 @@ class LivesPage extends Component {
                             <div className="recommend-wrapper">
                                 {
                                     this.props.recommendData.map(v => (
-                                        <Link to={`${HOST}/live-display/${v.id}`} key={v.src} className="recommend-item">
+                                        <Link to={`${HOST}/live/display/${v.id}`} key={v.src} className="recommend-item">
                                             <div>
                                                 <img src={v.src} alt="" />
                                             </div>

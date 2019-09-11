@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getSummary } from '../../redux/personal.redux';
+import { getSummary } from 'myredux/personal.redux';
+import { HOST } from 'myconst/host';
 import './me.less';
-import { HOST } from '../../const/host'
 
 class Me extends Component {
 
@@ -53,7 +53,6 @@ class Me extends Component {
                         :
                         ""
                 }
-
             </div>
         )
     }

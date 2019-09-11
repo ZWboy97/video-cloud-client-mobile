@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import store from './store';
+import store from './store';    // Redux 的 store
 import Router from './router';
 import './App.css'
 
 class App extends Component {
 
   componentDidMount() {
-    sessionStorage.setItem("userId", "5")
+    sessionStorage.setItem("userId", "5") // 临时处理
   }
 
   render() {
