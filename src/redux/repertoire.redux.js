@@ -1,28 +1,33 @@
 import axios from 'axios';
 import { API } from "../const/host";
 
+// Action Types
 const FETCH_BANNER = "FETCH_BANNER";
 const FETCH_RECOMMEND = "FETCH_RECOMMEND";
-const FETCH_SONGS = "FETCH_SONGS";
+const FETCH_LIVES_LIST = "FETCH_LIVES_LIST";
+
+// 初始state中的数据
 const initialState = {
     bannerData: [],
     recommendData: [],
     reSongsData: []
 };
-//reducer
-export function repertoire(state = initialState, action) {
+
+//reducer, 根据action对state进行处理，返回新的state
+export function lives(state = initialState, action) {
     switch (action.type) {
         case FETCH_BANNER:
             return { ...state, bannerData: action.payload };
         case FETCH_RECOMMEND:
             return { ...state, recommendData: action.payload };
-        case FETCH_SONGS:
+        case FETCH_LIVES_LIST:
             return { ...state, reSongsData: action.payload };
         default:
             return state
     }
 }
-//actionCreator
+
+//actionCreator， 创建action对象
 function bannerdata(data) {
     return {
         payload: data,
@@ -35,10 +40,10 @@ function recommendData(data) {
         type: FETCH_RECOMMEND
     }
 }
-function reSongsData(data) {
+function livesData(data) {
     return {
         payload: data,
-        type: FETCH_SONGS
+        type: FETCH_LIVES_LIST
     }
 }
 
@@ -68,12 +73,12 @@ export function fetchRecommend() {
 }
 
 //获取曲库好歌
-export function fetchReSongsData() {
+export function fetchLivesData() {
     return dispatch => {
-        axios.get(`${API}/mock/songs.json`).then(res => {
+        axios.get(`${API}/mock/lives.json`).then(res => {
             let data = res.data;
             if (data.result) {
-                dispatch(reSongsData(data.data))
+                dispatch(livesData(data.data))
             }
         })
     }

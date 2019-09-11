@@ -4,7 +4,7 @@ import { Carousel } from 'antd-mobile';
 import WhiteSpace from 'mycomponents/whiteSpace';
 import Title from 'mycomponents/title';
 import LivesList from 'mycomponents/lives-list/LivesList';
-import { fetchBanner, fetchRecommend, fetchReSongsData } from 'myredux/repertoire.redux';
+import { fetchBanner, fetchRecommend, fetchLivesData } from 'myredux/repertoire.redux';
 import { connect } from 'react-redux';
 import { HOST } from 'myconst/host';
 import './style.less';
@@ -19,7 +19,7 @@ class LivesPage extends Component {
     componentDidMount() {
         this.props.fetchBanner();
         this.props.fetchRecommend();
-        this.props.fetchReSongsData();
+        this.props.fetchLivesData();
     }
 
     render() {
@@ -94,6 +94,6 @@ class LivesPage extends Component {
     }
 }
 export default connect(
-    state => state.repertoire,
-    { fetchBanner, fetchRecommend, fetchReSongsData }
+    state => state.lives,
+    { fetchBanner, fetchRecommend, fetchLivesData }
 )(LivesPage)
