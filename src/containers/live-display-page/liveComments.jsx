@@ -6,7 +6,7 @@ import { createForm } from 'rc-form';
 import { Link } from 'react-router-dom';
 import WhiteSpace from 'mycomponents/whiteSpace';
 import { connect } from 'react-redux';
-import { addComments, delComments } from 'myredux/comment.redux';
+import { addComments } from 'myredux/comment.redux';
 import './style.less';
 
 const data = [
@@ -55,7 +55,7 @@ class Comments extends Component {
         });
     }
     handleClick = () => {
-        console.log('submit')
+        console.log('submit', this.state.value)
         this.props.addComments(this.state.value)
         console.log(this.props.comments)
         this.setState({
@@ -129,7 +129,7 @@ class Comments extends Component {
                 <ListView
                     ref={el => this.lv = el}
                     dataSource={this.state.dataSource}
-                    renderHeader={() => <span>header</span>}
+                    renderHeader={() => <span>评论</span>}
                     renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
                         {this.state.isLoading ? 'Loading...' : 'Loaded'}
                     </div>)}
@@ -150,5 +150,5 @@ class Comments extends Component {
 const Comments_form = createForm()(Comments);
 export default connect(
     state => state.commentsSettings,
-    { addComments, delComments }
+    { addComments }
 )(Comments_form)
