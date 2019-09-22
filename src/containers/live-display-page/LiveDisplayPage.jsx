@@ -50,9 +50,21 @@ class LiveDisplayPage extends React.Component {
                                     onChange={(tab, index) => { console.log('onChange', index, tab); }}
                                     onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
                                 >
-                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                                        <p>{this.props.live_configure.live_room_info.name}</p>
-
+                                    <div>
+                                        <div className="me-wrapper">
+                                            <div className="personal">
+                                                <div className="left">
+                                                    <div className="avatar">
+                                                        <img src={this.props.live_configure.live_room_info.picture_url}></img>
+                                                    </div>
+                                                </div>
+                                                <div className="right">
+                                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
+                                                        <p>{this.props.live_configure.live_room_info.name}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div>
                                         <Comments />

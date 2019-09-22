@@ -14,10 +14,10 @@ class CommentItem extends React.Component {
                                 <img style={{ width: '100%' }} src={obj.img} alt="" />
                             </div>
                         </div>
-                        <div className="nick-name">999</div>
+                        <div className="nick-name">{obj.des}</div>
                     </div>
                     <div className="right">
-                        999
+                        <span>{obj.title}</span>
                     </div>
                 </div>
             </div>

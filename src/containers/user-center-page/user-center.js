@@ -18,6 +18,7 @@ class UserCenter extends Component {
         axios.get(`${API}/mock/personal${this.props.match.params.id}/userInfo.json`).then(response => {
             let res = response.data;
             if (res.result) {
+                console.log('personal',res.data)
                 this.setState({
                     userInfo: res.data
                 })

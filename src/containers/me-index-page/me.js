@@ -20,7 +20,8 @@ class Me extends Component {
             userId: sessionStorage.getItem('userId')
         }, () => {
             this.props.getSummary(this.state.userId)
-        })
+        },sessionStorage.setItem('avatar',this.props.summary.avatar)
+        )
 
     }
 
