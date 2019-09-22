@@ -9,14 +9,14 @@ import { connect } from 'react-redux';
 import { addComments } from 'myredux/comment.redux';
 import './style.less';
 
-const data = [
-    {
-        img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-        title: 'Meet hotel',
-        des: '不是所有的兼职汪都需要风吹日晒',
-    },
+const data = [{
+    img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
+    title: 'Meet hotel',
+    des: '不是所有的兼职汪都需要风吹日晒',
+},
 ];
-const NUM_ROWS = 10;
+
+const NUM_ROWS = 5;
 let pageIndex = 0;
 // mock生成数据
 function genData(pIndex = 0) {
@@ -34,8 +34,12 @@ class Comments extends Component {
         const dataSource = new ListView.DataSource({
             rowHasChanged: (row1, row2) => row1 !== row2,
         })
+        const newComment = new ListView.DataSource({
+            rowHasChanged: (row1, row2) => row1 !== row2,
+        })
         this.state = {
             dataSource,
+            newComment,
             isLoading: true,
             userId: "",
             value: ''
@@ -51,16 +55,25 @@ class Comments extends Component {
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(this.rData),
             isLoading: false,
-            userId: sessionStorage.getItem('userId')
+            userId: sessionStorage.getItem('userId'),
+            avatar: sessionStorage.getItem('avatar')
         });
     }
     handleClick = () => {
         console.log('submit', this.state.value)
-        this.props.addComments(this.state.value)
-        console.log(this.props.comments)
-        this.setState({
-            value: ''
-        })
+        if (this.state.value) {
+            this.props.addComments(this.state.value)
+            console.log(this.props.comments)
+            console.log('length', this.props.comments.length)
+            if (this.props.comments) {
+                this.setState({
+                    newComment: this.state.newComment.cloneWithRows(this.props.comments)
+                })
+            }
+            this.setState({
+                value: ''
+            })
+        }
     }
     onEndReached = (event) => {
         // load new data
@@ -101,6 +114,18 @@ class Comments extends Component {
                 </div>
             );
         };
+        const coms = this.props.comments;
+        let num = coms.length - 1
+        const newComItem = (rowID) => {
+            const obj = coms[num--];
+            console.log('index', num)
+            console.log('obj', obj.img)
+            return (
+                <div key={rowID} style={{ padding: '0px 0px' }}>
+                    <CommentItem obj={obj}></CommentItem>
+                </div>
+            );
+        };
         return (
             <div >
                 <form >
@@ -126,26 +151,42 @@ class Comments extends Component {
                         </List.Item>
                     </List>
                 </form>
+
+                {
+                    this.props.comments && this.props.comments.length > 0 ?
+                        <div>
+                            <ListView
+                                dataSource={this.state.newComment}
+                                renderRow={newComItem}
+                                className="am-list"
+                                pageSize={4}
+                                useBodyScroll
+                                onScroll={() => { console.log('scroll'); }}
+                                scrollRenderAheadDistance={500}
+                                onEndReachedThreshold={10}
+                            />
+                        </div>
+                        : ""
+                }
                 <ListView
                     ref={el => this.lv = el}
                     dataSource={this.state.dataSource}
-                    renderHeader={() => <span>评论</span>}
-                    renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-                        {this.state.isLoading ? 'Loading...' : 'Loaded'}
-                    </div>)}
+                    renderFooter={() => (
+                        <div style={{ padding: 30, textAlign: 'center' }}>
+                            {this.state.isLoading ? 'Loading...' : 'Loaded'}
+                        </div>)}
                     renderRow={row}
                     className="am-list"
                     pageSize={4}
                     useBodyScroll
                     onScroll={() => { console.log('scroll'); }}
                     scrollRenderAheadDistance={500}
-                    onEndReached={this.onEndReached}
+                    // onEndReached={this.onEndReached}
                     onEndReachedThreshold={10}
                 />
             </div>
         )
     }
-
 }
 const Comments_form = createForm()(Comments);
 export default connect(

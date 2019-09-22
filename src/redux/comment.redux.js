@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { VCloudAPI } from '../const/host';
+import { getCurrentDate } from 'myutil/util';
 
 //Action Types
 const ADD_COMMENTS = 'Add_Comments';
@@ -21,7 +22,13 @@ export function commentsSettings(state = initialState, action) {
     case ADD_COMMENTS:
       console.log('state', state)
       var comments = state.comments;
-      comments.push(action.payload);
+      comments.push(
+        {
+          img: "https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png", //localStorage.getItem("userId"),
+          title: getCurrentDate(),//localStorage.getItem("avatar"),
+          des: action.payload
+        }
+      );
       return {
         ...state,
         comments: comments,
