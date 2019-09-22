@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { VCloudAPI } from "../const/host";
+import { VCloudAPI } from '../const/host';
 
 // Action Types
 const GET_LIVE_CONFIGURE = "GET_LIVE_CONFIGURE";
