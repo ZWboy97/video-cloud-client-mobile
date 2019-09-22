@@ -1,0 +1,52 @@
+@import "../../style/common.less";  // 导入公共样式
+
+#repertoire{
+  margin:0px 0 90px 0
+}
+.wing-blank{  // 变量
+  width:100%;
+  margin:0 auto;
+}
+/*banner*/
+.banner{
+  .wing-blank;  // 变量引用
+  .banner-img{
+    width: 100%;
+    vertical-align: top // 行内顶部对齐
+  }
+}
+/*推荐*/
+.recommend{
+  .wing-blank;
+  overflow-x: hidden; // x方向溢出的时候的处理效果
+  .recommend-wrapper{
+    width: 100%;
+    overflow-x: auto; // 由浏览器决定处理x轴溢出
+    white-space: nowrap;  // 控制空白字符以及换行字符的处理
+    .recommend-item {
+      display: inline-block; //线性，块模型
+      margin-right: 10px;
+      &:first-child{        // 特定修改第一个
+        margin-left: 10px;
+      }
+      &:last-child{
+        margin-right: 10px;
+      }
+      img{
+        width: 160px;
+        height: 90px;
+      }
+      .item-name{
+        font-size: 14px;
+        .fontColor;       // 变量引用
+        margin-top: 5px;
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+
+
