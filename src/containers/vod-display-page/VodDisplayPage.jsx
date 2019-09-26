@@ -26,7 +26,22 @@ class VodDisplayPage extends React.Component {
                         hotkey: true,
                         mutex: true,
                         volume: 0.1,
-                        video: { url: 'https://live360bucket.oss-cn-beijing.aliyuncs.com/vrresource/output2.mp4' }
+                        video: {
+                            url: 'https://live360bucket.oss-cn-beijing.aliyuncs.com/vrresource/output2.mp4',
+                            quality: [
+                                {
+                                    name: '标清',
+                                    url: 'https://live360bucket.oss-cn-beijing.aliyuncs.com/vrresource/output2.mp4',
+                                    type: 'customFlv',
+                                },
+                                {
+                                    name: '高清',
+                                    url: 'https://live360bucket.oss-cn-beijing.aliyuncs.com/vrresource/output2.mp4',
+                                    type: 'customFlv',
+                                },
+                            ],
+                            defaultQuality: 1,
+                        }
                     }}
                 />
                 <div>
