@@ -5,6 +5,9 @@ import { Tabs } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { fetchLiveConfigure } from 'myredux/livedisplay.redux';
 import Comments from './liveComments';
+import flvjs from 'flv.js';
+import DPlayer from 'react-dplayer';
+
 
 const tabs = [
     { title: '简介', sub: '1' },
@@ -37,12 +40,43 @@ class LiveDisplayPage extends React.Component {
 
                         <div>
 
-                            <FlvPlayer
-                                className="video-player"
-                                type="flv"
-                                width="100%"
-                                height=""
-                                url={this.props.live_configure.live_room_info.pull_http_flv_url}
+                            <DPlayer
+                                options={{
+                                    autoplay: true,
+                                    live: true,
+                                    hotkey: true,
+                                    screenshot: true,
+                                    mutex: true,
+                                    volume: 0.1,
+                                    video: {
+                                        url: this.props.live_configure.live_room_info.pull_http_flv_url,
+                                        type: "customFlv",
+                                        customType: {
+                                            customFlv: function (video, player) {
+                                                const flvplayer = flvjs.createPlayer({
+                                                    type: 'flv',
+                                                    url: video.src,
+                                                });
+                                                flvplayer.attachMediaElement(video);
+                                                flvplayer.load();
+                                            },
+                                        },
+                                        quality: [
+                                            {
+                                                name: '标清',
+                                                url: this.props.live_configure.live_room_info.pull_http_flv_url,
+                                                type: 'customFlv',
+                                            },
+                                            {
+                                                name: '高清',
+                                                url: this.props.live_configure.live_room_info.pull_http_flv_url,
+                                                type: 'customFlv',
+                                            },
+                                        ],
+                                        defaultQuality: 1,
+                                        pic: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
+                                    },
+                                }}
                             />
                             <div>
                                 <Tabs tabs={tabs}
