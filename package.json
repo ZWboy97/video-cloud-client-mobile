@@ -122,6 +122,5 @@
     "color-text-base": "#33A3F4",
     "brand-primary-tap": "#f7a03a"
   },
-  "homepage": ".",
-  "proxy": "http://acer.zwboy.cn:1207"
+  "homepage": "."
 }
