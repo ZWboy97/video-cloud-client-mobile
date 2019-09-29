@@ -7,23 +7,7 @@ const ADD_COMMENTS = 'Add_Comments';
 
 // 初始state中的数据
 const initialState = {
-  comments: [
-    {
-      img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-      title: 'Meet hotel',
-      des: '不是所有的兼职汪都需要风吹日晒',
-    },
-    {
-      img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-      title: 'Meet hotel',
-      des: '不是所有的兼职汪都需要风吹日晒',
-    },
-    {
-      img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-      title: 'Meet hotel',
-      des: '不是所有的汪都需要风吹日晒',
-    },
-  ]
+  comments: []
 }
 
 function add_Comment(text) {
@@ -38,11 +22,15 @@ export function commentsSettings(state = initialState, action) {
     case ADD_COMMENTS:
       console.log('state', state)
       var comments = state.comments;
+      if (comments.length >= 9) {
+        comments.shift();
+      }
       comments.push(
         {
           img: "https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png",
-          title: action.payload,
-          des: getCurrentDate()
+          message: action.payload,
+          time: getCurrentDate(),
+          name: "当前用户"
         }
       );
       return {

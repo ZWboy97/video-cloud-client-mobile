@@ -1,5 +1,5 @@
 import React from 'react';
-export function getCurrentDate(separator = '.',sep=':') {
+export function getCurrentDate(separator = '-', sep = ':') {
 
     let date = new Date().getDate();
     let month = new Date().getMonth() + 1;

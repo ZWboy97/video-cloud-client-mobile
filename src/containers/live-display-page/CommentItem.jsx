@@ -6,21 +6,26 @@ class CommentItem extends React.Component {
     render() {
         const { obj } = this.props;
         return (
-            <div className="me-wrapper">
-                <div className="personal">
-                    <div className="left">
-                        <div className="avatar">
-                            <div style={{ display: '-webkit-box', display: 'flex' }}>
-                                <img style={{ width: '100%' }} src={obj.img} alt="" />
-                            </div>
+            <div>
+                <div
+                    className="comment-container">
+                    <img
+                        className="image"
+                        src={obj.img} alt="touxiang" />
+                    <div className="content">
+                        <div
+                            className='name'>
+                            {obj.name}</div>
+                        <div className='message'>
+                            {obj.message}
                         </div>
-                        <div className="nick-name">{obj.des}</div>
-                    </div>
-                    <div className="right">
-                        <span>{obj.title}</span>
+                        <div className='time'>
+                            {obj.time}
+                        </div>
                     </div>
                 </div>
             </div>
+
         )
     }
 

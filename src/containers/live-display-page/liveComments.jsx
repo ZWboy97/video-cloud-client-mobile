@@ -25,35 +25,33 @@ class Comments extends Component {
         console.log('comments', comments);
         const dataSource = this.genDataSourceFromArray(comments);
 
-        const row = (rowData, sectionID, rowID) => {
-            console.log('rowdata', rowData);
-            const obj = rowData;
+        const row = (rowData, sessionID, rowID) => {
+            console.log('rowdata', rowData, sessionID, rowID);
             return (
-                <div key={rowID} style={{ padding: '0 15px' }}>
-                    <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
-                        <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
-                        <div style={{ lineHeight: 1 }}>
-                            <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{obj.des}</div>
-                            <div><span style={{ fontSize: '30px', color: '#FF6E27' }}>{rowID}</span>¥</div>
-                        </div>
-                    </div>
+                <div key={rowID} style={{ padding: '0px 0px' }}>
+                    <CommentItem obj={rowData}></CommentItem>
                 </div>
             );
         };
-        // const row = (rowData, rowID) => {
-        //     console.log(rowData, rowID);
-        //     return (
-        //         <div key={rowID} style={{ padding: '0px 0px' }}>
-        //             <CommentItem obj={rowData}></CommentItem>
-        //         </div>
-        //     );
-        // };
+        const separator = (sectionID, rowID) => (
+            <div
+                key={`${sectionID}-${rowID}`}
+                style={{
+                    backgroundColor: '#F5F5F9',
+                    height: 1,
+                    borderTop: '1px solid #ECECED',
+                    borderBottom: '1px solid #ECECED',
+                }}
+            />
+        );
         return (
             <div >
                 <ListView
                     dataSource={dataSource}
                     renderRow={row}
                     useBodyScroll
+                    renderSeparator={separator}
+                    pageSize={100}
                 />
             </div>
         )

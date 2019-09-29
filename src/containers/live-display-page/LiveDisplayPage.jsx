@@ -8,27 +8,6 @@ import Comments from './liveComments';
 import flvjs from 'flv.js';
 import DPlayer from 'react-dplayer';
 import LiveDescription from './LiveDescription';
-
-
-//todo 
-const data = [
-    {
-        img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-        title: 'Meet hotel',
-        des: '不是所有的兼职汪都需要风吹日晒',
-    },
-    {
-        img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-        title: 'Meet hotel',
-        des: '不是所有的兼职汪都需要风吹日晒',
-    },
-    {
-        img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-        title: 'Meet hotel',
-        des: '不是所有的兼职汪都需要风吹日晒',
-    },
-];
-
 const tabs = [
     { title: '简介', sub: '1' },
     { title: '评论', sub: '2' },
@@ -38,7 +17,6 @@ class LiveDisplayPage extends React.Component {
     state = {
         tabIndex: 0,
         inputValue: "",
-        dataSource: data
     }
 
     // 从地址栏读取参数 
