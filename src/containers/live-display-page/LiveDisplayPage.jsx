@@ -1,19 +1,23 @@
 import React from 'react';
 import './style.less';
-import FlvPlayer from 'mycomponents/FlvVideoPlayer/FlvPlayer';
-import { Tabs } from 'antd-mobile';
+import { Tabs, PullToRefresh, TextareaItem, Button, ListView } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { fetchLiveConfigure } from 'myredux/livedisplay.redux';
+import { addComments } from 'myredux/comment.redux';
 import Comments from './liveComments';
 import flvjs from 'flv.js';
 import DPlayer from 'react-dplayer';
-
-
+import LiveDescription from './LiveDescription';
 const tabs = [
     { title: '简介', sub: '1' },
-    { title: '评论', sub: '2' },
+    { title: '直播间', sub: '2' },
 ];
 class LiveDisplayPage extends React.Component {
+
+    state = {
+        tabIndex: 0,
+        inputValue: "",
+    }
 
     // 从地址栏读取参数 
     getUrlParam = (name) => {
@@ -29,18 +33,37 @@ class LiveDisplayPage extends React.Component {
         console.log('channel_id', channel_id)
         this.props.fetchLiveConfigure(channel_id);
     }
-    componentWillUnmount() {
+
+    changeTab = (tab, index) => {
+        this.setState({
+            tabIndex: index,
+            inputValue: ""
+        })
     }
+
+    handleClick = () => {
+        console.log('input：', this.state.inputValue)
+        this.props.addComments(this.state.inputValue);
+        this.setState({
+            inputValue: ""
+        })
+    }
+
+    onChange = (v) => {
+        console.log(v);
+        this.setState({
+            inputValue: v
+        })
+    }
+
     render() {
-        console.log(this.props.live_configure)
         return (
-            <div>
+            <div >
                 {
                     this.props.live_configure ?
-
-                        <div>
-
+                        <div className="live-page">
                             <DPlayer
+                                className="live-player"
                                 options={{
                                     autoplay: true,
                                     live: true,
@@ -74,42 +97,57 @@ class LiveDisplayPage extends React.Component {
                                             },
                                         ],
                                         defaultQuality: 1,
-                                        pic: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
                                     },
                                 }}
                             />
-                            <div>
+                            <div className="tabs">
                                 <Tabs tabs={tabs}
                                     initialPage={0}
-                                    onChange={(tab, index) => { console.log('onChange', index, tab); }}
-                                    onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
-                                >
-                                    <div>
-                                        <div className="me-wrapper">
-                                            <div className="personal">
-                                                <div className="left">
-                                                    <div className="avatar">
-                                                        <img src={this.props.live_configure.live_room_info.picture_url}></img>
-                                                    </div>
-                                                </div>
-                                                <div className="right">
-                                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                                                        <p>{this.props.live_configure.live_room_info.name}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <Comments />
-                                    </div>
-
-                                </Tabs>
-
+                                    onChange={(tab, index) => { this.changeTab(tab, index) }}
+                                />
                             </div>
+                            <PullToRefresh
+                                className="tab-content"
+                                refreshing={false}
+                                damping={0}
+                                style={{
+                                    overflow: 'auto',
+                                }}
+                            >
+                                {
+                                    this.state.tabIndex === 0 ?
+                                        <LiveDescription
+                                            live_info={this.props.live_configure.live_room_info}
+                                            className="desc-tab"
+                                        />
+                                        :
+                                        <Comments
+                                            comments={[]}
+                                            className="comment-tab" />
+                                }
+                            </PullToRefresh>
+                            {
+                                this.state.tabIndex === 1 ?
+                                    <div className="message-input">
+                                        <TextareaItem
+                                            ref="textArea"
+                                            className="text-area"
+                                            placeholder="发送消息"
+                                            value={this.state.inputValue}
+                                            onChange={(v) => this.onChange(v)}
+                                        >
+                                        </TextareaItem >
+                                        <Button
+                                            className="send-button"
+                                            type="primary"
+                                            onClick={this.handleClick}>
+                                            发送</Button>
+                                    </div>
+                                    :
+                                    <div></div>
+                            }
                         </div>
-
-                        : ""
+                        : <div></div>
                 }
 
             </div>
@@ -120,5 +158,5 @@ class LiveDisplayPage extends React.Component {
 
 export default connect(
     state => state.livedisplay,
-    { fetchLiveConfigure }
+    { fetchLiveConfigure, addComments }
 )(LiveDisplayPage);

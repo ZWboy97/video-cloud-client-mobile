@@ -16,7 +16,7 @@ class IRouter extends Component {
             <Router>
                 <div>
                     <Container></Container>
-                    <BottomTabBar></BottomTabBar>
+                    {/* <BottomTabBar></BottomTabBar> */}
                 </div>
             </Router>
         )

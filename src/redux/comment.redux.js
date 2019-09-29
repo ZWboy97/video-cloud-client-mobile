@@ -22,11 +22,15 @@ export function commentsSettings(state = initialState, action) {
     case ADD_COMMENTS:
       console.log('state', state)
       var comments = state.comments;
+      if (comments.length >= 9) {
+        comments.shift();
+      }
       comments.push(
         {
-          img: "https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png", //localStorage.getItem("userId"),
-          title: getCurrentDate(),//localStorage.getItem("avatar"),
-          des: action.payload
+          img: "https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png",
+          message: action.payload,
+          time: getCurrentDate(),
+          name: "当前用户"
         }
       );
       return {
@@ -38,8 +42,8 @@ export function commentsSettings(state = initialState, action) {
   }
 }
 
-export function addComments(text) {
+export function addComments(comment) {
   return dispatch => {
-    dispatch(add_Comment(text))
+    dispatch(add_Comment(comment))
   }
 }
