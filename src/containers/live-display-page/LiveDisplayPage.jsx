@@ -10,7 +10,7 @@ import DPlayer from 'react-dplayer';
 import LiveDescription from './LiveDescription';
 const tabs = [
     { title: '简介', sub: '1' },
-    { title: '评论', sub: '2' },
+    { title: '直播间', sub: '2' },
 ];
 class LiveDisplayPage extends React.Component {
 
