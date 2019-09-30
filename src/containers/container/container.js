@@ -28,10 +28,10 @@ class Container extends Component {
                     <Route path={`${HOST}/lives`} component={LivesPage} />
                     <Route path={`${HOST}/me`} component={Me} />
                     <Route path={`${HOST}/vod`} component={VodPage} />
-                    <Route path={`${HOST}/vod-display/:id`} component={VodDisplayPage} />
-                    <Route path={`${HOST}/live/display/:id`} component={LiveDisplayPage} />
+                    <Route path={`${HOST}/vod-display/`} component={VodDisplayPage} />
+                    <Route path={`${HOST}/live/display/`} component={LiveDisplayPage} />
                     <Route path={`${HOST}/search`} component={Search} />
-                    <Route path={`${HOST}/user-center/:id`} component={UserCenter} />
+                    <Route path={`${HOST}/user-center/`} component={UserCenter} />
                 </Switch>
             </div>
         )

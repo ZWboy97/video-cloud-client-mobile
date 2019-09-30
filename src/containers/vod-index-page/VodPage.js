@@ -36,7 +36,7 @@ class Discover extends Component {
                             this.props.data ?
                                 this.props.data.style.map(v => (
                                     <Link
-                                        to={`${HOST}/vod-display/34`}
+                                        to={`${HOST}/vod-display/`}
                                         className="style-item" key={v.id}>
                                         <div className="cover">
                                             <img src={v.cover} alt="图片丢失了！呜呜呜" />
@@ -57,7 +57,7 @@ class Discover extends Component {
                             this.props.data ?
                                 this.props.data.style.map(v => (
                                     <Link
-                                        to={`${HOST}/vod-display/34`}
+                                        to={`${HOST}/vod-display/`}
                                         className="style-item" key={v.id}>
                                         <div className="cover">
                                             <img src={v.cover} alt="图片丢失了！呜呜呜" />
